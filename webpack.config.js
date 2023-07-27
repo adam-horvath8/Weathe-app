@@ -13,14 +13,17 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         loader: "file-loader",
         options: {
           name: "[path][name].[ext]",
-          outputPath: "./dist/images",
+          outputPath: "./dist",
         },
       },
     ],
   },
   devtool: "inline-source-map",
+  devServer: {
+    static: path.resolve(__dirname, "dist"),
+  },
 };

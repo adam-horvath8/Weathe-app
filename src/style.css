@@ -1,0 +1,87 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 15vh;
+  background-color: aquamarine;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+input {
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.card {
+  min-height: 900px;
+  width: 40%;
+  background-color: rgb(213, 213, 213);
+  display: flex;
+  flex-direction: column;
+}
+
+.card .active {
+  display: flex;
+}
+
+.city-name-div {
+  flex: 1;
+  background-color: rgba(0, 0, 255, 0.272);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.city-name-heading {
+  font-size: 3rem;
+}
+
+.temperature-span {
+  font-size: 6rem;
+}
+
+.info-div {
+  flex: 2;
+  background-color: rgba(127, 255, 212, 0.293);
+  display: flex;
+}
+
+.left-info-div {
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.left-info-top {
+  background-color: brown;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+}
+
+.img-left-top {
+  height: 300px;
+  width: 300px;
+  margin-bottom: -80px;
+}
