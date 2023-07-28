@@ -8,8 +8,14 @@
 
 body {
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
-  background-color: rgb(40, 40, 40);
+  background: rgb(37, 251, 151);
+  background: linear-gradient(
+    0deg,
+    rgba(37, 251, 151, 1) 0%,
+    rgba(54, 144, 245, 1) 100%
+  );
 }
 
 header {
@@ -52,18 +58,13 @@ main {
 
 .card {
   height: 750px;
-  width: 35%;
+  width: 40%;
   padding-top: 20px;
-  background: rgb(37, 251, 151);
-  background: linear-gradient(
-    0deg,
-    rgba(37, 251, 151, 1) 0%,
-    rgba(54, 144, 245, 1) 100%
-  );
+  background-color: rgb(0, 0, 0, 0.2);
   animation: 1s ease-in-out appearFromNone forwards;
   flex-direction: column;
   border-radius: 20px;
-  border: 2px solid white;
+  /* border: 2px solid white; */
 }
 
 @keyframes appearFromNone {
