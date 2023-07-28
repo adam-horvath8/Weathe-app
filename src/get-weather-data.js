@@ -1,4 +1,5 @@
 import getFilteredData from "./filter-data";
+import createPopup from "./create-popup";
 
 async function getData(city) {
   try {

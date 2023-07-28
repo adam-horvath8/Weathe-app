@@ -1,6 +1,7 @@
 import getData from "./get-weather-data";
 import createCardElement from "./create-card-elemet";
 import imgSources from "./img-sources.js";
+import createPopup from "./create-popup";
 
 const input = document.querySelector("input");
 const main = document.querySelector("main");
@@ -23,12 +24,18 @@ async function displayWeatherData() {
       capitalizedCityName,
       roundedTemperature,
       currentWeatherData.description,
-      relevantImage
+      relevantImage,
+      currentWeatherData.humidity,
+      currentWeatherData.wind
     );
     main.appendChild(card);
   } catch (error) {
     console.error("Error fetching data:", error);
-    throw error;
+    const popup = createPopup("Please enter valid city name");
+    main.appendChild(popup);
+    setTimeout(() => {
+      popup.remove();
+    }, 2000);
   }
 }
 
@@ -39,17 +46,41 @@ function capitalizeFirstLetter(inputString) {
 }
 
 function addrelevantImage(currentWeather) {
-  switch (currentWeather.description) {
-    case "overcast cloud":
-      return imgSources.overcastCloud;
-      break;
-    case "clear sky":
-      return imgSources.clearSky;
-      break;
-    case currentWeather.description.match(/\bthunderstorm\b/i !== null):
-      return;
-      break;
-    case currentWeather.description.match(/\brain\b/i !== null):
-      return imgSources.rain;
+  const fogDescription = [
+    "mist",
+    "smoke",
+    "haze",
+    "sand/dust whirls",
+    "fog",
+    "sand",
+    "dust",
+    "volcanic ash",
+    "squalls",
+    "tornado",
+  ];
+
+  if (currentWeather.description.includes("thunderstorm")) {
+    return imgSources.thunderstorm;
+  } else if (
+    currentWeather.description.includes("rain") ||
+    currentWeather.description.includes("drizzle")
+  ) {
+    return imgSources.rain;
+  } else if (currentWeather.description === "clear sky") {
+    return imgSources.clearSky;
+  } else if (currentWeather.description.includes("clouds")) {
+    return imgSources.overcastCloud;
+  } else if (
+    currentWeather.description.includes("snow") &&
+    !currentWeather.description.includes("rain")
+  ) {
+    return imgSources.snow;
+  } else {
+    fogDescription.forEach((word) => {
+      if (currentWeather.description === word) {
+        return imgSources.fog;
+      }
+    });
+    return imgSources.fog;
   }
 }

@@ -1,15 +1,16 @@
-
+import imgSources from "./img-sources.js";
 
 function createCardElement(
   name,
   temperature,
   description,
-  urlTopLeft,
-  urlBottomLeft
+  imgDescription,
+  humidity,
+  wind
 ) {
   const card = document.createElement("div");
   card.id = "card";
-  card.classList.add("card");
+  card.className = "card";
 
   const cityNameDiv = document.createElement("div");
   cityNameDiv.id = "city-name-div";
@@ -43,7 +44,7 @@ function createCardElement(
   const imgLeftTop = document.createElement("img");
   imgLeftTop.id = "img-left-top";
   imgLeftTop.classList.add("img-left-top");
-  imgLeftTop.src = urlTopLeft;
+  imgLeftTop.src = imgDescription;
   leftInfoTop.appendChild(imgLeftTop);
 
   const spanLeftTop = document.createElement("span");
@@ -57,15 +58,31 @@ function createCardElement(
   leftInfoDiv.appendChild(leftInfoBottom);
 
   const imgLeftBottom = document.createElement("img");
-  imgLeftBottom.src = urlBottomLeft;
+  imgLeftBottom.classList.add("humidity-img");
+  imgLeftBottom.src = imgSources.humidity;
   leftInfoBottom.appendChild(imgLeftBottom);
 
   const spanLeftBottom = document.createElement("span");
   spanLeftBottom.classList.add("span-left-bottom");
+  spanLeftBottom.textContent = humidity + " %";
   leftInfoBottom.appendChild(spanLeftBottom);
 
   const rigthInfoDiv = document.createElement("div");
   rigthInfoDiv.classList.add("rigth-info-div");
+
+  const windDiv = document.createElement("div");
+  windDiv.classList.add("wind-div");
+  rigthInfoDiv.appendChild(windDiv);
+
+  const windImg = document.createElement("img");
+  windImg.classList.add("wind-img");
+  windImg.src = imgSources.wind;
+  windDiv.appendChild(windImg);
+
+  const windSpan = document.createElement("span");
+  windSpan.classList.add("wind-span");
+  windSpan.textContent = wind + " m/s";
+  windDiv.appendChild(windSpan);
 
   infoDiv.append(leftInfoDiv, rigthInfoDiv);
 
