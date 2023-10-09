@@ -3,6 +3,7 @@ import createCardElement from "./create-card-elemet";
 import imgSources from "./img-sources.js";
 import createPopup from "./create-popup";
 
+
 const input = document.querySelector("input");
 const main = document.querySelector("main");
 
@@ -31,7 +32,9 @@ async function displayWeatherData() {
     main.appendChild(card);
   } catch (error) {
     console.error("Error fetching data:", error);
+
     const popup = createPopup("Please enter valid city name");
+
     main.appendChild(popup);
     setTimeout(() => {
       popup.remove();
